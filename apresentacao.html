@@ -1035,6 +1035,15 @@ div.slide div.presenter_notes {
       </style>
       
     
+      
+      <style type="text/css" media="screen, projection">
+        div.titleslide h1 {
+    padding-top: 60px;
+}
+
+      </style>
+      
+    
     <!-- /Styles -->
     <!-- Javascripts -->
     
@@ -1458,7 +1467,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              1/12
+              1/19
             </aside>
           </footer>
         </div>
@@ -1495,7 +1504,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              2/12
+              2/19
             </aside>
           </footer>
         </div>
@@ -1528,7 +1537,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              3/12
+              3/19
             </aside>
           </footer>
         </div>
@@ -1563,7 +1572,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              4/12
+              4/19
             </aside>
           </footer>
         </div>
@@ -1578,10 +1587,12 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><ul>
-<li>Ambiente UNIX-like (Linux, OS X, FreeBSD, Cygwin)</li>
+<li>Linux ou OS X<ul>
+<li>Suporte não oficial ao Windows através do projeto WP-PowerShell - https://github.com/ericmann/WP-PowerShell</li>
+</ul>
+</li>
 <li>PHP &gt;= 5.3.2</li>
 <li>WordPress &gt;= 3.4</li>
-<li>Suporte não oficial ao Windows através do projeto WP-PowerShell - https://github.com/ericmann/WP-PowerShell</li>
 </ul></section>
             
           </div>
@@ -1598,7 +1609,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              5/12
+              5/19
             </aside>
           </footer>
         </div>
@@ -1613,7 +1624,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             
             
             <section><p>No terminal:</p>
-<div class="highlight"><pre><span class="go">curl https://raw.github.com/wp-cli/wp-cli.github.com</span>
+<div class="highlight"><pre><span class="go">$ curl https://raw.github.com/wp-cli/wp-cli.github.com</span>
 <span class="go">/master/installer.sh | bash</span>
 </pre></div>
 
@@ -1621,6 +1632,46 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
 <div class="highlight"><pre><span class="go"># WP-CLI Bash completions</span>
 <span class="go">source $HOME/.wp-cli/vendor/wp-cli/wp-cli/utils/</span>
 <span class="go">wp-completion.bash</span>
+</pre></div>
+
+<p>Mais informações em http://wp-cli.org</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="apresentacao.md">apresentacao.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: apresentacao.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Arquivo de configuração</h1></header>
+            
+            
+            <section><p>Arquivo wp-cli.yml na raiz do repositório</p>
+<p>Formato YAML</p>
+<p>Exemplo:</p>
+<div class="highlight"><pre><span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">src</span>
+<span class="l-Scalar-Plain">require</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">path/para/comando.php</span>
+<span class="l-Scalar-Plain">disabled_commands</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">db drop</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">plugin install</span>
 </pre></div>
 </section>
             
@@ -1638,7 +1689,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              6/12
+              7/19
             </aside>
           </footer>
         </div>
@@ -1646,11 +1697,24 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
       
       <!-- slide source: apresentacao.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Uso básico</h1></header>
             
+            
+            <section><p>Lista dos comandos disponíveis:</p>
+<div class="highlight"><pre><span class="go">$ wp</span>
+</pre></div>
+
+<p>Ajuda de um comando específico:</p>
+<div class="highlight"><pre><span class="go">$ wp help theme</span>
+</pre></div>
+
+<p>Ajuda de um sub-comando específico:</p>
+<div class="highlight"><pre><span class="go">$ wp help theme list</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -1666,7 +1730,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              7/12
+              8/19
             </aside>
           </footer>
         </div>
@@ -1694,7 +1758,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              8/12
+              9/19
             </aside>
           </footer>
         </div>
@@ -1705,16 +1769,21 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Arquivo de configuração</h1></header>
+            <header><h2>Baixar e instalar o WP</h2></header>
             
             
-            <section><p>Arquivo wp-cli.yml na raiz do repositório</p>
-<p>Formato YAML</p>
-<p>Exemplo:</p>
-<div class="highlight"><pre><span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">wp-core</span>
-<span class="l-Scalar-Plain">disabled_commands</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">db drop</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">plugin install</span>
+            <section><p>Baixar:</p>
+<div class="highlight"><pre><span class="go">$ wp core download</span>
+</pre></div>
+
+<p>Criar o wp-config.php:</p>
+<div class="highlight"><pre><span class="go">$ wp core config --dbname=baseDeDados --dbuser=usuario</span>
+</pre></div>
+
+<p>Instalar:</p>
+<div class="highlight"><pre><span class="go">$ wp core install --url=http://wc.dev --title=WC</span>
+<span class="go">--admin_user=admin --admin_password=wc</span>
+<span class="go">--admin_email=wordcamp@wordpress.org</span>
 </pre></div>
 </section>
             
@@ -1732,7 +1801,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              9/12
+              10/19
             </aside>
           </footer>
         </div>
@@ -1740,11 +1809,24 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
       
       <!-- slide source: apresentacao.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
-            <header><h1>Como contribuir</h1></header>
+            <header><h2>Tarefas de administração</h2></header>
             
+            
+            <section><p>Verificar a versão do WP:</p>
+<div class="highlight"><pre><span class="go">$ wp core version</span>
+</pre></div>
+
+<p>Atualizar WP:</p>
+<div class="highlight"><pre><span class="go">$ wp core update</span>
+</pre></div>
+
+<p>Atualizar plugins:</p>
+<div class="highlight"><pre><span class="go">$ wp plugin update --all</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -1760,7 +1842,164 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              10/12
+              11/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: apresentacao.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Tarefas de administração</h2></header>
+            
+            
+            <section><p>Instalar plugin:</p>
+<div class="highlight"><pre><span class="go">$ wp plugin install debug-bar</span>
+</pre></div>
+
+<p>Instalar tema:</p>
+<div class="highlight"><pre><span class="go">$ wp theme install p2</span>
+</pre></div>
+
+<p>Ativar tema:</p>
+<div class="highlight"><pre><span class="go">$ wp theme activate twentytwelve</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="apresentacao.md">apresentacao.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: apresentacao.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Tarefas de desenvolvimento</h2></header>
+            
+            
+            <section><p>Alterar uma string no banco de dados (em especial a URL do WP):</p>
+<div class="highlight"><pre><span class="go">$ wp search-replace textoAntigo textoNovo</span>
+</pre></div>
+
+<p>Executar código:</p>
+<div class="highlight"><pre><span class="go">$ wp shell</span>
+</pre></div>
+
+<p>Ver o valor de uma opção serializada:</p>
+<div class="highlight"><pre><span class="go">$ wp option get sidebars_widgets</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="apresentacao.md">apresentacao.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: apresentacao.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Banco de dados</h2></header>
+            
+            
+            <section><p>Exporta a base de dados para um arquivo SQL:</p>
+<div class="highlight"><pre><span class="go">$ wp db export dump.sql</span>
+</pre></div>
+
+<p>Importa um arquivo SQL para a base de dados:</p>
+<div class="highlight"><pre><span class="go">$ wp db import dump.sql</span>
+</pre></div>
+
+<p>Roda uma query no banco:</p>
+<div class="highlight"><pre><span class="go">$ wp db query &quot;select * from wp_users&quot;</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="apresentacao.md">apresentacao.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: apresentacao.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Combinando comandos</h2></header>
+            
+            
+            <section><p>Deletar um conjunto de posts:</p>
+<div class="highlight"><pre><span class="go">$ wp post delete $(wp post list --post_type=&#39;post&#39;</span>
+<span class="go">--format=ids)</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="apresentacao.md">apresentacao.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/19
             </aside>
           </footer>
         </div>
@@ -1771,12 +2010,76 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
         <div class="slide">
           <div class="inner">
             
-            <header><h1>Referências</h1></header>
+            <header><h1>O WP-CLI é extensível</h1></header>
+            
+            
+            <section><p>Existe uma API que permite a criação de novos comandos ou subcomandos.</p>
+<p>Um novo comando pode ser distribuído através de um plugin ou pode ser incluído localmente no arquivo de configuração do WP-CLI.</p>
+<p>O wp-super-cache é um exemplo de plugin que pode ser controlado através do WP-CLI.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="apresentacao.md">apresentacao.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: apresentacao.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>O WP-CLI é extensível</h1></header>
+            
+            
+            <section><p>Para mais informações sobre como criar um comando https://github.com/wp-cli/wp-cli/wiki/Commands-Cookbook</p>
+<p>Lista de comandos criados pela comunidade disponível em https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="apresentacao.md">apresentacao.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/19
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: apresentacao.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Como contribuir</h1></header>
             
             
             <section><ul>
 <li>http://wp-cli.org</li>
 <li>&#35;wordpress-cli no irc.freenode.net</li>
+<li>https://github.com/wp-cli/wp-cli/issues?state=open</li>
 </ul></section>
             
           </div>
@@ -1793,7 +2096,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              11/12
+              18/19
             </aside>
           </footer>
         </div>
@@ -1821,7 +2124,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             </aside>
             
             <aside class="page_number">
-              12/12
+              19/19
             </aside>
           </footer>
         </div>
@@ -1873,38 +2176,76 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">Uso básico</a></th>
+        <th><a href="#slide7">Arquivo de configuração</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">Exemplos de comandos</a></th>
+        <th><a href="#slide8">Uso básico</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">Arquivo de configuração</a></th>
+        <th><a href="#slide9">Exemplos de comandos</a></th>
         <td><a href="#slide9">9</a></td>
       </tr>
       
+        
+        <tr id="toc-row-10" class="sub">
+          <th><a href="#slide10">Baixar e instalar o WP</a></th>
+          <td><a href="#slide10">10</a></td>
+        </tr>
+        
+        <tr id="toc-row-11" class="sub">
+          <th><a href="#slide11">Tarefas de administração</a></th>
+          <td><a href="#slide11">11</a></td>
+        </tr>
+        
+        <tr id="toc-row-12" class="sub">
+          <th><a href="#slide12">Tarefas de administração</a></th>
+          <td><a href="#slide12">12</a></td>
+        </tr>
+        
+        <tr id="toc-row-13" class="sub">
+          <th><a href="#slide13">Tarefas de desenvolvimento</a></th>
+          <td><a href="#slide13">13</a></td>
+        </tr>
+        
+        <tr id="toc-row-14" class="sub">
+          <th><a href="#slide14">Banco de dados</a></th>
+          <td><a href="#slide14">14</a></td>
+        </tr>
+        
+        <tr id="toc-row-15" class="sub">
+          <th><a href="#slide15">Combinando comandos</a></th>
+          <td><a href="#slide15">15</a></td>
+        </tr>
+        
       
-      <tr id="toc-row-10">
-        <th><a href="#slide10">Como contribuir</a></th>
-        <td><a href="#slide10">10</a></td>
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">O WP-CLI é extensível</a></th>
+        <td><a href="#slide16">16</a></td>
       </tr>
       
       
-      <tr id="toc-row-11">
-        <th><a href="#slide11">Referências</a></th>
-        <td><a href="#slide11">11</a></td>
+      <tr id="toc-row-17">
+        <th><a href="#slide17">O WP-CLI é extensível</a></th>
+        <td><a href="#slide17">17</a></td>
       </tr>
       
       
-      <tr id="toc-row-12">
-        <th><a href="#slide12">Perguntas?</a></th>
-        <td><a href="#slide12">12</a></td>
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Como contribuir</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Perguntas?</a></th>
+        <td><a href="#slide19">19</a></td>
       </tr>
       
       

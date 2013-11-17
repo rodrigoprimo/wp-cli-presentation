@@ -42,10 +42,10 @@ Criado por Cristi Burcă (scribu) e Andreas Creten.
 
 # Requisitos
 
-* Ambiente UNIX-like (Linux, OS X, FreeBSD, Cygwin)
+* Linux ou OS X
+    * Suporte não oficial ao Windows através do projeto WP-PowerShell - https://github.com/ericmann/WP-PowerShell
 * PHP >= 5.3.2
 * WordPress >= 3.4
-* Suporte não oficial ao Windows através do projeto WP-PowerShell - https://github.com/ericmann/WP-PowerShell
 
 ---
 
@@ -54,7 +54,7 @@ Criado por Cristi Burcă (scribu) e Andreas Creten.
 No terminal:
 
     !shell-session
-    curl https://raw.github.com/wp-cli/wp-cli.github.com
+    $ curl https://raw.github.com/wp-cli/wp-cli.github.com
     /master/installer.sh | bash
 
 Adicionar as linhas abaixo ao .bash_profile para auto-complete dos comandos:
@@ -64,13 +64,7 @@ Adicionar as linhas abaixo ao .bash_profile para auto-complete dos comandos:
     source $HOME/.wp-cli/vendor/wp-cli/wp-cli/utils/
     wp-completion.bash
 
----
-
-# Uso básico
-
----
-
-# Exemplos de comandos
+Mais informações em http://wp-cli.org
 
 ---
 
@@ -83,21 +77,167 @@ Formato YAML
 Exemplo:
 
     !yaml
-    path: wp-core
+    path: src
+    require: path/para/comando.php
     disabled_commands:
       - db drop
       - plugin install
 
 ---
 
-# Como contribuir
+# Uso básico
+
+Lista dos comandos disponíveis:
+
+    !shell-session
+    $ wp
+
+Ajuda de um comando específico:
+
+    !shell-session
+    $ wp help theme
+
+Ajuda de um sub-comando específico:
+
+    !shell-session
+    $ wp help theme list
 
 ---
 
-# Referências
+# Exemplos de comandos
+
+---
+
+## Baixar e instalar o WP
+
+Baixar:
+
+    !shell-session
+    $ wp core download
+
+Criar o wp-config.php:
+
+    !shell-session
+    $ wp core config --dbname=baseDeDados --dbuser=usuario
+
+Instalar:
+
+    !shell-session
+    $ wp core install --url=http://wc.dev --title=WC
+    --admin_user=admin --admin_password=wc
+    --admin_email=wordcamp@wordpress.org
+
+---
+
+## Tarefas de administração 
+
+Verificar a versão do WP:
+
+    !shell-session
+    $ wp core version
+
+Atualizar WP:
+
+    !shell-session
+    $ wp core update
+
+Atualizar plugins:
+
+    !shell-session
+    $ wp plugin update --all
+
+---
+
+## Tarefas de administração
+
+Instalar plugin:
+
+    !shell-session
+    $ wp plugin install debug-bar
+
+Instalar tema:
+
+    !shell-session
+    $ wp theme install p2
+
+Ativar tema:
+
+    !shell-session
+    $ wp theme activate twentytwelve
+
+---
+
+## Tarefas de desenvolvimento
+
+Alterar uma string no banco de dados (em especial a URL do WP):
+
+    !shell-session
+    $ wp search-replace textoAntigo textoNovo
+
+Executar código:
+
+    !shell-session
+    $ wp shell
+
+Ver o valor de uma opção serializada:
+
+    !shell-session
+    $ wp option get sidebars_widgets
+
+---
+
+## Banco de dados
+
+Exporta a base de dados para um arquivo SQL:
+
+    !shell-session
+    $ wp db export dump.sql
+
+Importa um arquivo SQL para a base de dados:
+
+    !shell-session
+    $ wp db import dump.sql
+
+Roda uma query no banco:
+
+    !shell-session
+    $ wp db query "select * from wp_users"
+
+---
+
+## Combinando comandos
+
+Deletar um conjunto de posts:
+
+    !shell-session
+    $ wp post delete $(wp post list --post_type='post'
+    --format=ids)
+
+---
+
+# O WP-CLI é extensível
+
+Existe uma API que permite a criação de novos comandos ou subcomandos.
+
+Um novo comando pode ser distribuído através de um plugin ou pode ser incluído localmente no arquivo de configuração do WP-CLI.
+
+O wp-super-cache é um exemplo de plugin que pode ser controlado através do WP-CLI.
+
+---
+
+# O WP-CLI é extensível
+
+Para mais informações sobre como criar um comando https://github.com/wp-cli/wp-cli/wiki/Commands-Cookbook
+
+Lista de comandos criados pela comunidade disponível em https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands
+
+---
+
+# Como contribuir
 
 * http://wp-cli.org
 * &#35;wordpress-cli no irc.freenode.net
+* https://github.com/wp-cli/wp-cli/issues?state=open
 
 ---
 
