@@ -14,20 +14,15 @@ WordCamp São Paulo 2013
 * Trabalho com WordPress desde 2009
 * Defensor do software livre
 * Montanhista e ciclista nas horas vagas
-* http://rodrigoprimo.com
-* http://github.com/rodrigoprimo
 
 ---
 
 # O que é o WP-CLI
 
-É um conjunto de ferramentas para gerenciar o WordPress a partir da linha de comando.
-
-Permite atualizar plugins, alterar opções, instalar temas e muito mais.
-
-Construído reaproveitando o código do próprio WP.
-
-Criado por Cristi Burcă (scribu) e Andreas Creten.
+* É um conjunto de ferramentas para gerenciar o WordPress a partir da linha de comando.
+* Permite atualizar plugins, alterar opções, instalar temas, entre outras funções.
+* Construído reaproveitando o código do próprio WP.
+* Criado por Cristi Burcă (scribu) e Andreas Creten.
 
 ---
 
@@ -85,6 +80,9 @@ Exemplo:
 
 ---
 
+# Estrutura dos comandos
+
+---
 # Uso básico
 
 Lista dos comandos disponíveis:
@@ -217,19 +215,16 @@ Deletar um conjunto de posts:
 
 # O WP-CLI é extensível
 
-Existe uma API que permite a criação de novos comandos ou subcomandos.
-
-Um novo comando pode ser distribuído através de um plugin ou pode ser incluído localmente no arquivo de configuração do WP-CLI.
-
-O wp-super-cache é um exemplo de plugin que pode ser controlado através do WP-CLI.
+* Existe uma API que permite a criação de novos comandos ou subcomandos.
+* Um novo comando pode ser distribuído através de um plugin ou pode ser incluído localmente no arquivo de configuração do WP-CLI.
+* O wp-super-cache é um exemplo de plugin que pode ser controlado através do WP-CLI.
 
 ---
 
 # O WP-CLI é extensível
 
-Para mais informações sobre como criar um comando https://github.com/wp-cli/wp-cli/wiki/Commands-Cookbook
-
-Lista de comandos criados pela comunidade disponível em https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands
+* Para mais informações sobre como criar um comando: https://github.com/wp-cli/wp-cli/wiki/Commands-Cookbook
+* Lista de comandos criados pela comunidade disponível em: https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands
 
 ---
 
@@ -237,9 +232,20 @@ Lista de comandos criados pela comunidade disponível em https://github.com/wp-c
 
 * http://wp-cli.org
 * &#35;wordpress-cli no irc.freenode.net
-* https://github.com/wp-cli/wp-cli/issues?state=open
+* https://github.com/wp-cli/wp-cli/issues
 
 ---
 
-# Perguntas?
+# Obrigado!
+
+
+__Rodrigo Primo__
+
+rodrigo@hacklab.com.br
+
+http://rodrigoprimo.com
+
+http://github.com/rodrigoprimo
+
+.fx: titleslide  
 
