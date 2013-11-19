@@ -98,6 +98,11 @@
             </section>
           </div>
           <footer>
+            {% if slide.number == 1 %}
+              <aside class="logo">
+                <img src="hacklab.png" />
+              </aside>
+            {% endif %}
             {% if slide.source %}
             <aside class="source">
               Source: <a href="{{ slide.source.rel_path }}">{{ slide.source.rel_path }}</a>
