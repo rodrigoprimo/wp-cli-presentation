@@ -238,7 +238,6 @@ Deletar um conjunto de posts:
 
 # Obrigado!
 
-
 __Rodrigo Primo__
 
 rodrigo@hacklab.com.br
@@ -247,5 +246,5 @@ http://rodrigoprimo.com
 
 http://github.com/rodrigoprimo
 
-.fx: titleslide  
+.fx: lastslide  
 

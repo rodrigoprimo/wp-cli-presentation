@@ -31,6 +31,10 @@ div.slide h1 {
     font-size: 63px;
 }
 
+div.titleslide h1 {
+    font-weight: bold;
+}
+
 div.slide h2 {
     font-size: 54px;
 }
@@ -61,3 +65,6 @@ div.slide {
 div.inner {
     padding-top: 60px;
 }
+
+div.lastslide { text-align: center; }
+div.lastslide h1 { padding-top: 60px; padding-bottom: 60px; font-size: 63px; font-weight: bold;}
