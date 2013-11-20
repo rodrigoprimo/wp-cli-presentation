@@ -10,7 +10,7 @@ WordCamp São Paulo 2013
 
 # Quem sou eu
 
-* Sócio e desenvolvedor no Hacklab (hacklab.com.br)
+* Sócio e desenvolvedor no Hacklab
 * Trabalho com WordPress desde 2009
 * Defensor do software livre
 
@@ -20,7 +20,7 @@ WordCamp São Paulo 2013
 
 * É um conjunto de ferramentas para gerenciar o WordPress a partir da linha de comando.
 * Permite atualizar plugins, alterar opções, instalar temas, entre outras funções.
-* Escrito em PHP e publicado como software livre (MIT Public license)
+* Escrito em PHP e publicado como software livre (MIT Public license).
 * Construído reaproveitando o código do próprio WP.
 * Criado por Cristi Burcă (scribu) e Andreas Creten em 2011.
 
@@ -109,34 +109,16 @@ Atualizar o WP, plugins e temas:
 No terminal:
 
     !shell-session
-    $ curl https://raw.github.com/wp-cli/wp-cli.github.com
-    /master/installer.sh | bash
+    $ curl https://raw.github.com/wp-cli/wp-cli.github.com/master/
+    installer.sh | bash
 
 Adicionar as linhas abaixo ao .bash_profile para auto-complete dos comandos:
 
     !shell-session
     # WP-CLI Bash completions
-    source $HOME/.wp-cli/vendor/wp-cli/wp-cli/utils/
-    wp-completion.bash
+    source ~/.wp-cli/vendor/wp-cli/wp-cli/utils/wp-completion.bash
 
 Mais informações em http://wp-cli.org
-
----
-
-# Arquivo de configuração
-
-Arquivo wp-cli.yml na raiz do repositório
-
-Formato YAML
-
-Exemplo:
-
-    !yaml
-    path: src
-    require: path/para/comando.php
-    disabled_commands:
-      - db drop
-      - plugin install
 
 ---
 
@@ -252,8 +234,7 @@ Roda uma query no banco:
 Deletar um conjunto de posts:
 
     !shell-session
-    $ wp post delete $(wp post list --post_type='post'
-    --format=ids)
+    $ wp post delete $(wp post list --post_type='post' --format=ids)
 
 ---
 
@@ -268,7 +249,7 @@ Deletar um conjunto de posts:
 
 # CLI para o wp-super-cache
 
-Carregando os comandos:
+Carregar novos comandos:
 
     !php
     function wpsc_cli_init() {
@@ -279,13 +260,16 @@ Carregando os comandos:
             include dirname(__FILE__) . '/cli.php';
         }
     }
+    
     add_action( 'plugins_loaded', 'wpsc_cli_init' );
+
+Fonte: https://github.com/wp-cli/wp-super-cache-cli
 
 ---
 
-# Cli para o wp-super-cache
+# CLI para o wp-super-cache
 
-Adicionando novos comandos para o wp-cli:
+Adicionar novo comando no arquivo cli.php:
 
     !php
     WP_CLI::add_command( 'super-cache', 'WPSuperCache_Command' );
@@ -294,21 +278,48 @@ Adicionando novos comandos para o wp-cli:
      * Command line interface for wp-super-cache
      */
     class WPSuperCache_Command extends WP_CLI_Command {
-        /**
-         * Disable the WP Super Cache.
-         */
-        function disable( $args = array(), $assoc_args = array() ) {
-            global $super_cache_enabled;
+        [...]
+    }
     
-            wp_super_cache_disable();
-    
-            if(!$super_cache_enabled) {
-                WP_CLI::success( 'The WP Super Cache is disabled.' );
+---
+
+# CLI para o wp-super-cache
+
+Exemplo de comando:
+
+    !php
+    /**
+     * Clear something from the cache.
+     *
+     * @synopsis [--post_id=<post-id>]
+     */
+    function flush( $args = array(), $assoc_args = array() ) {
+        [...]
+    }
+
+---
+
+# CLI para o wp-super-cache
+
+    !php
+    function flush( $args = array(), $assoc_args = array() ) {
+        if ( isset($assoc_args['post_id']) ) {
+            if ( is_numeric( $assoc_args['post_id'] ) ) {
+                wp_cache_post_change( $assoc_args['post_id'] );
+                WP_CLI::success( 'Cache cleared.' );
             } else {
-                WP_CLI::error('The WP Super Cache is still enabled, check its settings page for more info.');
+                WP_CLI::error( 'This is not a valid post id.' );
             }
+            wp_cache_post_change( $assoc_args['post_id'] );
+        } else {
+            global $file_prefix;
+
+            wp_cache_clean_cache( $file_prefix, true );
+            WP_CLI::success( 'Cache cleared.' );
         }
     }
+
+---
 
 # Como contribuir
 

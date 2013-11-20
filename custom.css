@@ -71,3 +71,8 @@ aside.logo {
     right: 0px;
     display: block;
 }
+
+pre {
+    font-size: 22px;
+    padding: 0 10px;
+}
