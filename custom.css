@@ -62,10 +62,6 @@ div.slide {
     line-height: 1.5;
 }
 
-div.inner {
-    padding-top: 60px;
-}
-
 div.lastslide { text-align: center; }
 div.lastslide h1 { padding-top: 60px; padding-bottom: 60px; font-size: 63px; font-weight: bold;}
 

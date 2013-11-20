@@ -13,7 +13,6 @@ WordCamp São Paulo 2013
 * Sócio e desenvolvedor no Hacklab (hacklab.com.br)
 * Trabalho com WordPress desde 2009
 * Defensor do software livre
-* Montanhista e ciclista nas horas vagas
 
 ---
 
@@ -21,25 +20,86 @@ WordCamp São Paulo 2013
 
 * É um conjunto de ferramentas para gerenciar o WordPress a partir da linha de comando.
 * Permite atualizar plugins, alterar opções, instalar temas, entre outras funções.
+* Escrito em PHP e publicado como software livre (MIT Public license)
 * Construído reaproveitando o código do próprio WP.
-* Criado por Cristi Burcă (scribu) e Andreas Creten.
+* Criado por Cristi Burcă (scribu) e Andreas Creten em 2011.
 
 ---
 
-# Para que serve
+# Para que serve?
 
-* Automação
-* Integração
-* Desenvolvimento
-* Administração
+---
+
+## Automação
+
+Backups periódicos da base de dados:
+
+    !shell-session
+    #!/bin/bash
+
+    cd /diretorio/wp/
+
+    wp db export /diretorio/backup/wordpress.sql
+
+---
+
+## Integração
+
+Script Python para pegar informações de um usuário:
+
+    !python
+    import subprocess
+    
+    def get_wp_user_info(user_name):
+        command = ["wp", "user", "get", user_name]
+    
+        proc = subprocess.Popen(command,
+            stdout=subprocess.PIPE)
+        out, err = proc.communicate()
+    
+        return out.strip("\n")
+    
+    print get_wp_user_info("admin")
+   
+---
+
+## Desenvolvimento
+
+Geração de código:
+
+    !shell-session
+    $ wp scaffold plugin wordcamp
+    $ wp scaffold post-type slides --plugin=wordcamp
+    
+Depuração:
+
+    !shell-session
+    $ wp shell
+    wp> get_bloginfo('blogname')
+    string(13) "WordCamp"
+    wp> get_the_title(1)
+    string(23) "WordCamp São Paulo 2013"
+
+---
+
+## Administração
+
+Atualizar o WP, plugins e temas:
+
+    !shell-session
+    $ wp core update
+    $ wp core update-db
+    $ wp theme update --all
+    $ wp plugin update --all
 
 ---
 
 # Requisitos
 
+* Acesso ao shell
 * Linux ou OS X
     * Suporte não oficial ao Windows através do projeto WP-PowerShell - https://github.com/ericmann/WP-PowerShell
-* PHP >= 5.3.2
+* PHP >= 5.3.2 e php5-cli
 * WordPress >= 3.4
 
 ---
@@ -80,9 +140,6 @@ Exemplo:
 
 ---
 
-# Estrutura dos comandos
-
----
 # Uso básico
 
 Lista dos comandos disponíveis:
@@ -100,9 +157,15 @@ Ajuda de um sub-comando específico:
     !shell-session
     $ wp help theme list
 
+Estrutura dos comandos:
+
+    !shell-session
+    $ wp comando subcomando --assoc_arg1=value1 arg1
+    $ wp user get --format=json admin
+
 ---
 
-# Exemplos de comandos
+# Mais exemplos de comandos
 
 ---
 
@@ -124,25 +187,6 @@ Instalar:
     $ wp core install --url=http://wc.dev --title=WC
     --admin_user=admin --admin_password=wc
     --admin_email=wordcamp@wordpress.org
-
----
-
-## Tarefas de administração 
-
-Verificar a versão do WP:
-
-    !shell-session
-    $ wp core version
-
-Atualizar WP:
-
-    !shell-session
-    $ wp core update
-
-Atualizar plugins:
-
-    !shell-session
-    $ wp plugin update --all
 
 ---
 
@@ -172,15 +216,15 @@ Alterar uma string no banco de dados (em especial a URL do WP):
     !shell-session
     $ wp search-replace textoAntigo textoNovo
 
-Executar código:
-
-    !shell-session
-    $ wp shell
-
 Ver o valor de uma opção serializada:
 
     !shell-session
     $ wp option get sidebars_widgets
+
+Gerar dados para teste:
+
+    !shell-session
+    $ wp post generate --count=500
 
 ---
 
@@ -217,16 +261,54 @@ Deletar um conjunto de posts:
 
 * Existe uma API que permite a criação de novos comandos ou subcomandos.
 * Um novo comando pode ser distribuído através de um plugin ou pode ser incluído localmente no arquivo de configuração do WP-CLI.
-* O wp-super-cache é um exemplo de plugin que pode ser controlado através do WP-CLI.
-
----
-
-# O WP-CLI é extensível
-
 * Para mais informações sobre como criar um comando: https://github.com/wp-cli/wp-cli/wiki/Commands-Cookbook
 * Lista de comandos criados pela comunidade disponível em: https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands
 
 ---
+
+# CLI para o wp-super-cache
+
+Carregando os comandos:
+
+    !php
+    function wpsc_cli_init() {
+        if ( !function_exists( 'wp_super_cache_enable' ) )
+            return;
+    
+        if ( defined('WP_CLI') && WP_CLI ) {
+            include dirname(__FILE__) . '/cli.php';
+        }
+    }
+    add_action( 'plugins_loaded', 'wpsc_cli_init' );
+
+---
+
+# Cli para o wp-super-cache
+
+Adicionando novos comandos para o wp-cli:
+
+    !php
+    WP_CLI::add_command( 'super-cache', 'WPSuperCache_Command' );
+    
+    /**
+     * Command line interface for wp-super-cache
+     */
+    class WPSuperCache_Command extends WP_CLI_Command {
+        /**
+         * Disable the WP Super Cache.
+         */
+        function disable( $args = array(), $assoc_args = array() ) {
+            global $super_cache_enabled;
+    
+            wp_super_cache_disable();
+    
+            if(!$super_cache_enabled) {
+                WP_CLI::success( 'The WP Super Cache is disabled.' );
+            } else {
+                WP_CLI::error('The WP Super Cache is still enabled, check its settings page for more info.');
+            }
+        }
+    }
 
 # Como contribuir
 
