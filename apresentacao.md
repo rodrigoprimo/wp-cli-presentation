@@ -274,7 +274,7 @@ Fonte: https://github.com/wp-cli/wp-super-cache-cli
 
 # CLI para o wp-super-cache
 
-Adicionar novo comando no arquivo cli.php:
+Deve-se criar uma classe para cada comando. Os métodos públicos da classe são os sub-comandos.
 
     !php
     WP_CLI::add_command( 'super-cache', 'WPSuperCache_Command' );

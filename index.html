@@ -2277,7 +2277,7 @@ a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^
             <header><h1>CLI para o wp-super-cache</h1></header>
             
             
-            <section><p>Adicionar novo comando no arquivo cli.php:</p>
+            <section><p>Deve-se criar uma classe para cada comando. Os métodos públicos da classe são os sub-comandos.</p>
 <div class="highlight"><pre><span class="nx">WP_CLI</span><span class="o">::</span><span class="na">add_command</span><span class="p">(</span> <span class="s1">&#39;super-cache&#39;</span><span class="p">,</span> <span class="s1">&#39;WPSuperCache_Command&#39;</span> <span class="p">);</span>
 
 <span class="sd">/**</span>
