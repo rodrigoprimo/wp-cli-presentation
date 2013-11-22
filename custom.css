@@ -1,3 +1,7 @@
+body {
+    background-color: #FFF;
+}
+
 @font-face {
     font-family: 'Museo';
     src: url('fonts/Museo300-Regular-webfont.eot');
