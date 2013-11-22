@@ -208,6 +208,11 @@ Gerar dados para teste:
     !shell-session
     $ wp post generate --count=500
 
+Gerar novamente todos os thumbnails:
+
+    !shell-session
+    $ wp media regenerate
+
 ---
 
 ## Banco de dados
